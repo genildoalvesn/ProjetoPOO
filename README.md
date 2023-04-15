@@ -1,9 +1,6 @@
-# ProjetoPOO1"
+# POO-Estacionamento
 
-## Primeiro Projeto da disciplina de POO
-Onde foi criado uma Classe Estacionamento com Aplicação Gráfica
+Sistema de Gerenciamento de Estacionamento em Java, Implementação de duas classes com interface gráfica
 
-## Contribuidores 🐱‍💻
-### Alic Victor
-### João Marcos
-### Genildo
+## 🐱‍💻 Contribuidores
+### Alic Victor, João Marcos e Genildo
