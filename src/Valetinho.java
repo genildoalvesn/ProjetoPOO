@@ -106,13 +106,10 @@ public class Valetinho {
 		btnNewButton.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textField.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Campo Vazio!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					return;
-				} 
 				try {
-					int n = Integer.parseInt(textField.getText());
+					int n = 10; //= Integer.parseInt(textField.getText());
 					estacionamento = new Estacionamento(n);
+					estacionamento.lerDados();
 					JOptionPane.showMessageDialog(null, "Estacionamento Criado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception i) {
 					JOptionPane.showMessageDialog(null, i.getMessage(), "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
@@ -142,12 +139,6 @@ public class Valetinho {
 		btnNewButton_1.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					textField_1.setText("");
-					textField_2.setText("");
-					return;
-				}
 				if (textField_1.getText().isEmpty() || textField_2.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Vazio!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -156,6 +147,7 @@ public class Valetinho {
 				int vaga = Integer.parseInt(textField_2.getText());
 				try {
 					estacionamento.entrar(placa, vaga);
+					estacionamento.gravarDados();
 					JOptionPane.showMessageDialog(null, "Veículo " + placa + " entrou na vaga " + vaga, "Entrar", JOptionPane.INFORMATION_MESSAGE);
 					textField_1.setText("");
 					textField_2.setText("");
@@ -181,11 +173,6 @@ public class Valetinho {
 		btnNewButton_2.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					textField_4.setText("");
-					return;
-				}
 				if (textField_4.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Vazio!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -194,6 +181,7 @@ public class Valetinho {
 				int vaga = Integer.parseInt(textField_4.getText());
 				try {
 					estacionamento.sair(vaga);
+					estacionamento.gravarDados();
 					JOptionPane.showMessageDialog(null, "Veículo saiu da vaga " + vaga, "Sair", JOptionPane.INFORMATION_MESSAGE);
 					textField_4.setText("");
 				} catch (Exception i) {
@@ -218,11 +206,6 @@ public class Valetinho {
 		btnNewButton_3.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					textField_5.setText("");
-					return;
-				}
 				if (textField_5.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Vazio!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -266,12 +249,6 @@ public class Valetinho {
 		btnNewButton_4.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					textField_6.setText("");
-					textField_7.setText("");
-					return;
-				}
 				if (textField_6.getText().isEmpty() || textField_7.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Campo Vazio!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -317,13 +294,9 @@ public class Valetinho {
 		btnNewButton_5.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
 				textArea.setText("");
-				for(String s : estacionamento.listarGeral()) {
-					textArea.append(" " + s + "\n");
+				for(int i=0; i< estacionamento.listarGeral().length;i++) {
+					textArea.append((i+1) + "→" + estacionamento.listarGeral()[i]+"\n");
 				}
 			}
 		});
@@ -339,10 +312,6 @@ public class Valetinho {
 		btnNewButton_6.setFont(new Font("JetBrains Mono ExtraBold", Font.BOLD, 11));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (estacionamento == null) {
-					JOptionPane.showMessageDialog(null, "Crie um Estacionamento com N vagas!", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
 				textArea_1.setText("");
 				for(Integer s : estacionamento.listarLivres()) {
 					textArea_1.append(" " + s + "\n");
